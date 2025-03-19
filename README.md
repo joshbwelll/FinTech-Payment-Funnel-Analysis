@@ -7,9 +7,9 @@ A significant number of subscriptions remain unpaid which indicates potential fr
 The finance team has noticed that many subscriptions haven't been paid for, so they've reached out to the product team to understand if there are any frictions points in the online payment portal so they can increase the conversion rate (% of subscriptions that are successfully converting to a paid subscription).
 
 **Methodology:**
-EDA
-Product Funnel Analysis
-Data Visualization
+1. EDA
+2. Product Funnel Analysis
+3. Data Visualization
 
 **Skills:**
 * SQL – CTEs, CASE, subqueries, window functions
