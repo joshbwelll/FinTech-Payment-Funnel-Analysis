@@ -13,14 +13,14 @@ Data Visualization
 
 **Skills:**
 * SQL – CTEs, CASE, subqueries, window functions
-*Data visualization
-*Data Wrangling
-*Data Cleaning
-*Data Science Notebook
-*Snowflake Data warehouse
-*Tableau
-*Data Model
-*SQL Code
+* Data visualization
+* Data Wrangling
+* Data Cleaning
+* Data Science Notebook
+* Snowflake Data warehouse
+* Tableau
+* Data Model
+* SQL Code
 
 **Results & Business Recommendation:**
 
