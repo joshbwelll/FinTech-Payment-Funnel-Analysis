@@ -22,6 +22,120 @@ The finance team has noticed that many subscriptions haven't been paid for, so t
 * Data Model
 * SQL Code
 
+```sql
+WITH max_status_reached AS (
+SELECT
+    PSL.subscription_id,
+    MAX(PSL.STATUS_ID) as max_status
+FROM PUBLIC.PAYMENT_STATUS_LOG PSL
+JOIN PUBLIC.PAYMENT_STATUS_DEFINITIONS DEF
+ON PSL.STATUS_ID = DEF.STATUS_ID
+GROUP BY 1   
+)
+,
+payment_funnel AS (
+SELECT
+    subs.subscription_id,
+    date_trunc('year', order_date) as order_year,
+    current_payment_status,
+    m.max_status,
+    CASE WHEN m.max_status = 1 THEN 'Payment Widget Opened'
+        WHEN m.max_status = 2 THEN 'Payment Entered'
+        WHEN m.max_status = 3 and current_payment_status = 0 THEN 'User Error with Payment'
+        WHEN m.max_status = 3 and current_payment_status != 0 THEN 'Payment Submitted'
+        WHEN m.max_status = 4 and current_payment_status = 0 THEN 'Payment Processing Error with Vendor'
+        WHEN m.max_status = 4 and current_payment_status != 0 THEN 'Payment Success w/Vendor'
+        WHEN m.max_status = 5 THEN 'Complete'
+        WHEN m.max_status is null THEN 'User Has Not Started the Payment Process'
+        END AS payment_funnel_stage
+FROM public.subscriptions subs
+LEFT JOIN max_status_reached m
+ON subs.subscription_id = m.subscription_id
+)
+SELECT
+    payment_funnel_stage,
+    order_year,
+    COUNT(*) as numb_subs
+FROM payment_funnel
+GROUP BY 1, 2
+ORDER BY 2 DESC
+```
+
+
+```sql
+WITH max_status_reached AS (
+SELECT
+    PSL.subscription_id,
+    MAX(PSL.STATUS_ID) as max_status
+FROM PUBLIC.PAYMENT_STATUS_LOG PSL
+JOIN PUBLIC.PAYMENT_STATUS_DEFINITIONS DEF
+ON PSL.STATUS_ID = DEF.STATUS_ID
+GROUP BY 1   
+)
+,
+payment_funnel AS (
+SELECT
+    subs.subscription_id,
+    date_trunc('year', order_date) as order_year,
+    current_payment_status,
+    m.max_status,
+
+    CASE WHEN m.max_status = 5 THEN 1 ELSE 0 END AS completed_payment,
+    CASE WHEN m.max_status is not null THEN 1 ELSE 0 END AS started_payment  
+FROM public.subscriptions subs
+LEFT JOIN max_status_reached m
+ON subs.subscription_id = m.subscription_id
+)
+SELECT
+    SUM(completed_payment) as num_subs_completed_payment,
+    SUM(started_payment) as num_subs_started_payment,
+    COUNT(*) as total_subs,
+    num_subs_completed_payment * 100 / total_subs as conversion_rate,
+    num_subs_completed_payment * 100 / num_subs_started_payment as workflow_completion_rate 
+
+FROM payment_funnel
+```
+
+
+```sql
+with error_subs AS (
+    SELECT
+        distinct subscription_id
+    FROM public.payment_status_log
+    WHERE status_id =0
+)
+SELECT
+    COUNT(errs.subscription_id) * 100 / COUNT(s.subscription_id) AS perc_subs_hit_error
+FROM public.subscriptions s
+LEFT JOIN error_subs errs
+ON s.subscription_id = errs.subscription_id
+--
+--
+--can solve as subquery
+--SELECT
+--    (SELECT COUNT(distinct subscription_id) FROM public.payment_status_log WHERE status_id = 0) * 100 / COUNT(*) AS per_subs_hit
+--FROM public.subscriptions
+```
+
+
+```sql
+with error_subs AS (
+    SELECT
+        distinct subscription_id
+    FROM public.payment_status_log
+    WHERE status_id =0
+)
+SELECT
+    s.subscription_id,
+    CASE WHEN errs.subscription_id is not null THEN 1
+    ELSE 0
+    END AS has_error    
+FROM public.subscriptions s
+LEFT JOIN error_subs errs
+ON s.subscription_id = errs.subscription_id
+```
+
+
 **Results & Business Recommendation:**
 
 **Results:**
