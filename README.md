@@ -2,6 +2,8 @@
 
 **Executive Summary:**
 A significant number of subscriptions remain unpaid which indicates potential friction in the online payment process and has largely impacted revenue negatively. This analysis identifies pain points within the payment portal and provide actionable recommendations to improve the conversion rate of successful payments using SQL and a data science notebook to build a product funnel analysis.
+![image](https://github.com/user-attachments/assets/b6b46878-c6fa-43d7-ab0d-cd783c0c7cdb)
+
 
 **Business Problem:**
 The finance team has noticed that many subscriptions haven't been paid for, so they've reached out to the product team to understand if there are any frictions points in the online payment portal so they can increase the conversion rate (% of subscriptions that are successfully converting to a paid subscription).
