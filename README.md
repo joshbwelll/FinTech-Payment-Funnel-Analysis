@@ -1,4 +1,4 @@
-# Payment-Funnel-Analysis
+# FinTech-Payment-Funnel-Analysis
 
 **Executive Summary:**
 A significant number of subscriptions remain unpaid which indicates potential friction in the online payment process and has largely impacted revenue negatively. This analysis identifies pain points within the payment portal and provide actionable recommendations to improve the conversion rate of successful payments using SQL and a data science notebook to build a product funnel analysis.
