@@ -150,6 +150,7 @@ ON s.subscription_id = errs.subscription_id
 - Reduce friction on the enter payment page by considering Apple Pay, Google Pay, or other payment methods that don't require entering in a credit card every time. This will help reduce user errors due to incorrect payment info.
 - Reach out to the 3rd party payment processing vendor and inquire about the errors on their side and determine a plan reduce those in the future.
 Work with the product manager to increase the number of subscriptions that are opening the payment portal and attempting to pay. Since a large number of subscriptions aren't even going into the payment portal, we're losing a large number of opportunities at the beginning of the funnel, so maybe we can set up payment reminders or have customer service agent call them to encourage payment.
+- Meet with Product Manager and UX/UI Design Team to consider making enhancements to the payment page to better highlight the next steps in the payment flow.
 
 **Next Steps:**
 * Investigate why subscriptions aren't even starting the payment process. 
