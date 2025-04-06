@@ -101,7 +101,7 @@ FROM payment_funnel
 
 
 ```sql
-with error_subs AS (
+WITH error_subs AS (
     SELECT
         distinct subscription_id
     FROM public.payment_status_log
@@ -122,7 +122,7 @@ ON s.subscription_id = errs.subscription_id
 
 
 ```sql
-with error_subs AS (
+WITH error_subs AS (
     SELECT
         distinct subscription_id
     FROM public.payment_status_log
