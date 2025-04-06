@@ -1,7 +1,8 @@
 # FinTech-Payment-Funnel-Analysis
 
 **Executive Summary:**
-A significant number of subscriptions remain unpaid which indicates potential friction in the online payment process and has largely impacted revenue negatively. This analysis identifies pain points within the payment portal and provide actionable recommendations to improve the conversion rate of successful payments using SQL and a data science notebook to build a product funnel analysis.
+A large volume of unpaid subscriptions at a fintech company revealed significant friction in the online payment experience, negatively impacting revenue. This analysis leveraged SQL and a data science notebook to build a comprehensive product funnel, identifying key drop-off points within the payment process. The findings informed strategic, data-driven recommendations to improve the conversion rate of successful payments.
+
 ![image](https://github.com/user-attachments/assets/b6b46878-c6fa-43d7-ab0d-cd783c0c7cdb)
 
 
@@ -12,6 +13,7 @@ The finance team has noticed that many subscriptions haven't been paid for, so t
 1. EDA
 2. Product Funnel Analysis
 3. Data Visualization
+    4. Tableau 
 
 **Skills:**
 * SQL – CTEs, CASE, subqueries, window functions
@@ -22,7 +24,7 @@ The finance team has noticed that many subscriptions haven't been paid for, so t
 * Snowflake Data warehouse
 * Tableau
 * Data Model
-* SQL Code
+* SQL Code:
 
 ```sql
 WITH max_status_reached AS (
@@ -151,5 +153,7 @@ ON s.subscription_id = errs.subscription_id
 Work with the product manager to increase the number of subscriptions that are opening the payment portal and attempting to pay. Since a large number of subscriptions aren't even going into the payment portal, we're losing a large number of opportunities at the beginning of the funnel, so maybe we can set up payment reminders or have customer service agent call them to encourage payment.
 
 **Next Steps:**
-* Investigate the error breakdown further to determine which errors are most common (user errors or vendor errors)
-* Investigate why subscriptions aren't even starting the payment process. Is it a process issue on our side? Are customers forgetting?
+* Investigate why subscriptions aren't even starting the payment process. 
+* Conduct a deeper error type analysis to distinguish between user-side and vendor-side failures
+* Investigate issues causing users to bypass the payment portal altogether. Is it a process issue on our side? Are customers forgetting? Potential technical barriers or lack of reminders?
+
