@@ -12,8 +12,7 @@ The finance team has noticed that many subscriptions haven't been paid for, so t
 **Methodology:**
 1. EDA
 2. Product Funnel Analysis
-3. Data Visualization
-    4. Tableau 
+3. Data Visualization (Tableau) 
 
 **Skills:**
 * SQL – CTEs, CASE, subqueries, window functions
