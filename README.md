@@ -7,7 +7,7 @@ A large volume of unpaid subscriptions at a fintech company revealed significant
 
 
 **Business Problem:**
-The finance team has noticed that many subscriptions haven't been paid for, so they've reached out to the product team to understand if there are any frictions points in the online payment portal so they can increase the conversion rate (% of subscriptions that are successfully converting to a paid subscription).
+The finance team has noticed that many subscriptions haven't been paid for, so they've reached out to the product team to understand if there are any frictions points in the online payment portal so they can increase the conversion rate.
 
 **Methodology:**
 1. EDA
@@ -114,9 +114,9 @@ LEFT JOIN error_subs errs
 ON s.subscription_id = errs.subscription_id
 --
 --
---can solve as subquery
+--Showing this can be solved with subquery
 --SELECT
---    (SELECT COUNT(distinct subscription_id) FROM public.payment_status_log WHERE status_id = 0) * 100 / COUNT(*) AS per_subs_hit
+--(SELECT COUNT(distinct subscription_id) FROM public.payment_status_log WHERE status_id = 0) * 100 / COUNT(*) AS per_subs_hit
 --FROM public.subscriptions
 ```
 
