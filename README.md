@@ -146,7 +146,7 @@ ON s.subscription_id = errs.subscription_id
 <img width="1151" alt="image" src="https://github.com/user-attachments/assets/9328e51a-50c6-42e4-8f2a-d3d4b1e0de9c" />
 
 - 16.95% of subscriptions have hit an error
-- X% of subscriptions have not opened the payment portal
+- 20.34% of subscriptions have completed payment
 
 **Business Recommendations:**
 - Reduce friction on the enter payment page by considering Apple Pay, Google Pay, or other payment methods that don't require entering in a credit card every time. This will help reduce user errors due to incorrect payment info.
