@@ -25,6 +25,8 @@ The finance team has noticed that many subscriptions haven't been paid for, so t
 * Data Model
 * SQL Code:
 
+Showed payment funnel stages using CASE, then showed Stages by year and count of subscriptions
+
 ```sql
 WITH max_status_reached AS (
 SELECT
@@ -64,6 +66,7 @@ GROUP BY 1, 2
 ORDER BY 2 DESC
 ```
 
+To obtain the Payment conversion rate, Payment workflow completion rate
 
 ```sql
 WITH max_status_reached AS (
@@ -99,6 +102,7 @@ SELECT
 FROM payment_funnel
 ```
 
+Wanted to find the Error rate
 
 ```sql
 WITH error_subs AS (
@@ -120,6 +124,7 @@ ON s.subscription_id = errs.subscription_id
 --FROM public.subscriptions
 ```
 
+Created a binary column to flag errors using a case statement
 
 ```sql
 WITH error_subs AS (
