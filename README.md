@@ -1,4 +1,4 @@
-# FinTech-Payment-Funnel-Analysis
+# FinTech-Payment-Funnel-Analysis (Payments & FinTech Exposure)
 
 **Executive Summary:**
 A large volume of unpaid subscriptions at a fintech company revealed significant friction in the online payment experience, negatively impacting revenue. This analysis leveraged SQL and a data science notebook to build a comprehensive product funnel, identifying key drop-off points within the payment process. The findings informed strategic, data-driven recommendations to improve the conversion rate of successful payments.
